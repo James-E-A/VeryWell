@@ -1,0 +1,3 @@
+django > 5.2
+uuid6; python_version < "3.14"
+tzlocal >= 5

@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import tzlocal
+
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -108,7 +111,7 @@ AUTH_USER_MODEL = 'meta.User'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = tzlocal.get_localzone_name() if (os.environ.get("DJANGO_FORCE_UTC", "0") == "0") else 'UTC'
 
 USE_I18N = True
 
