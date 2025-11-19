@@ -17,7 +17,8 @@ class UserManager(BaseUserManager):
         user.greeting_name = greeting_name
         user.set_password(password)
         if is_admin:
-            user.is_admin = True
+            if user.email != "root@localhost":
+                raise ValueError("wrong e-mail for admin")
 
         user.save()
         return user
